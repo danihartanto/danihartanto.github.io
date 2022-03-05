@@ -7,6 +7,7 @@
     <body style="height:100%;">
         <div class="draggable" style="position:absolute; top:50px; left:10px; width:200px; height:200px; background:#f00;"></div>
         <div class="draggable" style="position:absolute; top:50px; left:10px; width:50px; height:50px; background:#f00;"></div>
+        <div class="draggable2" style="position:absolute; top:50px; left:10px; width:50px; height:50px; background:green;"></div>
         
         <div>
             <button id="enable">Enable</button>
@@ -20,6 +21,7 @@
         <script src="jquery.draggableTouch.js"></script>
         <script>
             $(document).ready(function() {
+                $(".draggable2").draggableTouch();
                 $("#enable").click(function() {
                     $(".draggable").draggableTouch();
                 });
