@@ -75,4 +75,16 @@ const favColor = (elem) => {
     c.fillStyle = elem.value;
 };
 
+function touchstart(event) { drawstart(event.touches[0]) }
+function touchmove(event) { drawmove(event.touches[0]); event.preventDefault(); }
+function touchend(event) { drawend(event.changedTouches[0]) }
+
+canvas.addEventListener('touchstart', touchstart, false);
+canvas.addEventListener('touchmove', touchmove, false);
+canvas.addEventListener('touchend', touchend, false);
+
+canvas.addEventListener('mousedown', drawstart, false);
+canvas.addEventListener('mousemove', drawmove, false);
+canvas.addEventListener('mouseup', drawend, false);
+
 document.querySelector("a").addEventListener('click',(event)=> event.target.href = canvas.toDataURL())
