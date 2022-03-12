@@ -1,45 +1,86 @@
 <!DOCTYPE html>
 <html style="height:100%;">
-    <head>
-        <title>jQuery Draggable Touch Example</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body style="height:100%;">
-        <div class="draggable3> <img class="card" src="profil.jpg" alt="Card image" style="max-width:200px; height: auto; margin-left: auto; margin-right: auto; display: block;"></div>
-        <div class="draggable" style="position:absolute; top:50px; left:40px; width:200px; height:200px; background:#f00;"></div>
-        <div class="draggable" style="position:absolute; top:50px; left:80px; width:50px; height:50px; background:#f00;"></div>
-        <div class="draggable2" style="position:absolute; top:50px; left:10px; width:100px; height:100px; background:blue;"><img src="profil.jpg"></div>
-        
-        <div>
-            <button id="enable">Enable</button>
-            <button id="enable-transform">Enable useTransform:true</button>
-            <button id="disable">Disable</button>
-        </div>
-        
-        <div id="console"></div>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-        <script src="jquery.draggableTouch.js"></script>
-        
+
+<head>
+    <title>jQuery Draggable Touch Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style-kladogram.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    .column{
+        background-color: whitesmoke;
+        padding: 2px;
+        position: absolute;
+    }
+    .img, .img1, .img2, .img3, .img4{
+        text-align: center;
+        margin: 2px;
+    }
+</style>
+<body style="height:100%;">
+    
+
+    <div id="board">
         <script>
-            $(document).ready(function() {
-                $(".draggable2").draggableTouch();
-                $(".draggable3").draggableTouch();
-                $("#enable").click(function() {
-                    $(".draggable").draggableTouch();
-                });
-                $("#enable-transform").click(function() {
-                    $(".draggable").draggableTouch({useTransform:true});
-                });
-                $("#disable").click(function() {
-                    $(".draggable").draggableTouch("disable");
-                });
-                
-      
+            $(document).ready(function () {
+                $(".column").draggableTouch();
+
             });
-            
-          
-            
         </script>
-    </body>
+        <div class="column">
+            <p class="img1"><img class="img" src="ikan.jpeg">Ikan</p>
+        </div>
+        <div class="column" style="margin-left: 110px; display: flex;">
+            <p class="img2"><img class="img" src="kadal.jpeg">Kadal</p>
+        </div>
+        <div class="column" style="margin-left: 220px; display: flex;">
+            <p class="img3"><img class="img" src="kelinci.jpeg">Kelinci</p>
+        </div>
+        <div class="column" style=" margin-left: 330px; display: flex;">
+            <p class="img4"><img class="img" src="kucing.jpeg">Kucing</p>
+        </div>
+        <hr>
+        <!-- box tools draw -->
+        <h4 class="float-right mt-3">Silahkan gambarkan Kladogram sesuai dengan pengamatan</h4>
+        <table class="table table-bordered">
+            <td class="text-center">
+                <i class="fa fa-refresh fa-trash">Hapus</i>
+            </td>
+            <div id="pen-tools" class="pen-tools">
+                <td class="text-center mt-1">
+                    <div id="favContainer"> <label for="favcolor">Pilih warna</label>
+                        <input type="color" name="favcolor" id="favcolor" value="#ff0000" onchange="favColor(this)">
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div id="pen-size" class="pen-size">
+                        <label for="pen-size"><i class="fa fa-pencil">Ukuran</i></label>
+                        <input type="range" name="pen-size" id="pen-size" value="2" step="2" min="1" max="50"
+                            onchange="penSizeChange(this.value)">
+                    </div>
+                </td>
+        
+        
+            </div>
+        
+        
+        </table>
+        <canvas id="myCanvas" width="1100px" height="720px"></canvas>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="jquery.draggableTouch.js"></script>
+</body>
+<script src="script.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="test.js"></script> -->
+
 </html>
