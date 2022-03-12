@@ -1,0 +1,69 @@
+.img{
+    width: 100px;
+    height: 100px;
+    display: block; 
+    }
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+/* .column {
+    float: left;
+    width: 9%;
+    padding: 0px;
+    }
+img{
+    width: 50px;
+    height: 100px;
+    } */
+
+    /* Clear floats after image containers */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+    } 
+
+canvas{
+    background: #fff;
+    border: 2px dashed;
+    margin: auto;
+}
+
+.pen-tools{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    width: 60%;
+    margin: auto;
+}
+.pen-size{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 16px;
+}
+
+
+.drawing-colors{
+    display: flex;
+    margin-bottom: 10px;
+}
+.color-circle{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin-left: 5px;
+    border: 1px solid black;
+}
+
+.color-circle:nth-child(1){
+    background-color: black;
+}
+.color-circle:nth-child(2){
+    background-color: red;
+}
+.color-circle:nth-child(3){
+    background-color: orange;
+}
+
+.active {
+    transform: scale(1.3);
+}
