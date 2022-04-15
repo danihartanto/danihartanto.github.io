@@ -11293,8 +11293,8 @@ html {
 }
 
 .content-section {
-  padding-top: 7.5rem;
-  padding-bottom: 7.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
 }
 
 .content-section-heading h2, .content-section-heading .h2 {
@@ -11434,7 +11434,7 @@ html {
 }
 
 footer.footer {
-  padding-top: 5rem;
+  padding-top: 1rem;
   padding-bottom: 5rem;
 }
 footer.footer .social-link {
