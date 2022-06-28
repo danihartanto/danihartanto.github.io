@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+</head>
+<style>
+body {
+  background: #333;
+  padding-top: 5em;
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+/* DEMO-SPECIFIC STYLES */
+.typewriter .pertama {
+  color: #fff;
+  font-family: monospace;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 6.5s steps(50, end),
+    blink-caret .5s step-end infinite;
+}
+.typewriter .kedua {
+  color: #fff;
+  font-family: monospace;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 6.5s steps(50, end),
+    blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
+}
+.marquee {
+    color: #fff;
+    font-family: monospace;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+}
+</style>
+<body>
+    <div class="container mt-4">
+        <div class="typewriter">
+            <h1 class="pertama"> </h1>
+            <p class="marquee"><b style="color: #333;">-----------------------------------</b>She'd take the world off my shoulders,    <b style="color: #333;">-----------------------------------</b>    <i>no more text, world was end.</i> <b style="color: #333;">-------------------------</b></p>
+            
+        </div>
+        <br>
+        <br><br>
+        <br>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center text-center">
+                <audio controls autoplay>
+                    <source src="joji.ogg" type="audio/ogg">
+                    <source src="joji.mp3" type="audio/mpeg">
+                </audio>
+                
+            </div>
+            <div class="col col-12 mt-4">
+                
+            </div>
+        </div>
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    
+</body>
+<script>
+    const marquees = [...document.querySelectorAll('.marquee')];
+    marquees.forEach((marquee) => {
+    marquee.innerHTML = marquee.innerHTML + '&nbsp;'.repeat(100);
+    marquee.i = 0;
+    marquee.step = 2;
+        marquee.width = (marquee.clientWidth + 1);
+    marquee.style.position = '';
+    marquee.innerHTML = `${marquee.innerHTML}&nbsp;`.repeat(10);
+    marquee.addEventListener('mouseenter', () => marquee.step = 0, false);
+    marquee.addEventListener('mouseleave', () => marquee.step = 5, false);
+    });
+
+    setInterval(move, 150);
+
+    function move() {
+    marquees
+    .forEach((marquee) => {
+    marquee.style.marginLeft = `-${marquee.i}px`;;
+    marquee.i = marquee.i < marquee.width ? marquee.i + marquee.step : 1;
+    }); 
+    }
+</script>
+</html>
+
