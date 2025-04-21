@@ -31,6 +31,60 @@
         overflow: hidden;
       }
 
+      #success, #fail{
+        display: none;
+      
+      }
+      
+      #message, #success, #fail{
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      
+      .math-container{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      
+      .math-p{
+        display: inline;
+        margin-right: 5px;
+      }
+      
+      .math-input, .math-button{
+        font-family: 'Open Sans';
+        font-weight: lighter;
+        font-size: 12px;
+      }
+      
+      .math-input{
+        border: 1px solid #FFBBD7;
+        width: 30px;
+        height: 20px;
+        text-align: center;
+      }
+      .math-button{
+        border: none;
+          border-radius: 1.5em;
+          color: #FFF;
+          background: #FFBBD7;
+          padding: 2.5px 10px;
+          width: 75px;
+          height: 30px;
+          cursor: pointer;
+          transition: background .5s ease-in-out;
+      }
+      .math-button:hover:enabled{
+        background: #303030;
+      }
+      
+      .math-button:disabled{
+        opacity: .5;
+        cursor: default;
+      }
+
       .container {
         padding: 0 1rem;
       }
@@ -194,12 +248,72 @@
                 <div class='thing'><button class="btn btn-danger" onclick = "music()">Click to Open a Music!! <p id = "result_music"></p><span class="emoji">🚀</span></button></div>
               </div>
               <div class="col-lg-4 d-block">
-                <div class='thing'><button class="btn btn-danger" onclick = "music()">Click to Open a Doc!! <p id = "result_music"></p><span class="emoji">🏅</span></button></div>
+                <div class='thing'><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#mathModal" >Click to Open a Library!! <p id = "modal_math"></p><span class="emoji">🏅</span></button></div>
               </div>
             </div>
         </div>
     </div>   
-    
+    <!-- Modal -->
+
+    <div class="modal fade" id="mathModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <p id="question"></p class="math-p" ><input class="math-input" id="ans" type="text">
+              <div id="message">Please verify.</div>
+              <div id="success">Validation complete :)</div>
+              <div id="fail">Validation failed :(</div>			
+              <button class="math-button" type="submit" value="submit">Submit</button>
+              <button class="math-button" type="reset" value="reset">Reset</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var total;
+
+        function getRandom(){
+          return Math.ceil(Math.random()* 20);
+        }
+        function createSum(){
+          var randomNum1 = getRandom(),
+            randomNum2 = getRandom();
+          total =randomNum1 + randomNum2;
+          $( "#question" ).text( randomNum1 + " + " + randomNum2 + "=" );  
+          $("#ans").val('');
+          checkInput();
+        }
+
+        function checkInput(){
+            var input = $("#ans").val(), 
+              slideSpeed = 200,
+              hasInput = !!input, 
+              valid = hasInput && input == total;
+            $('#message').toggle(!hasInput);
+            $('.math-button[type=submit]').prop('disabled', !valid);  
+            $('#success').toggle(valid);
+            $('#fail').toggle(hasInput && !valid);
+        }
+
+        $(document).ready(function(){
+          //create initial sum
+          createSum();
+          // On "reset button" click, generate new random sum
+          $('button[type=reset]').click(createSum);
+          // On user input, check value
+          $( "#ans" ).keyup(checkInput);
+        });
+    </script>
     <script>
         function redirect () {
             setTimeout(myURL, 3000);
@@ -215,6 +329,8 @@
             var result = document.getElementById("result_music");
             result.innerHTML = "<br><b> Reload after 3 seconds <img src='images/gg.gif' class='img-fluid' alt='gambar loading'>";
         }
+
+
 
         function urlMusic() {
             document.location.href = '/index_music.html';
